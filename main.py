@@ -1,5 +1,13 @@
 # https://www.youtube.com/watch?v=rfscVS0vtbw
 # command + / : footnote
+
+# add comment :
+# git add .
+# git status
+# git commit -m "second commit"
+# git push -u origin main
+# git checkout -b freshman (for other brach)
+
 # Strings
 character_name = "Tom"
 character_age = "54"
@@ -244,12 +252,197 @@ while i <= 10:
 print("Done with loop")
 
 # Building a guessing game_using while loop, continuous ask
+#
+# secret_word = "HK"
+# guess = ""
+# guess_count = 0
+# guess_limit = 3
+# out_of_guesses = False #bullian_keep playing
+#
+# while guess != secret_word and not(out_of_guesses): # false for word & false for (out_of_guesses)
+#     if guess_count < guess_limit: # when guess_count is 3 -> out to else
+#         guess = input("Enter guess: ")
+#         guess_count += 1
+#     else:
+#         out_of_guesses = True #when it is true -> out from while loop
+#
+# if out_of_guesses:
+#     print("Out of Guesses, YOU LOSE!") #true for (out_of_guess) -> print this
+# else:
+#     print("You win!")
 
-secret_word = "HK"
-guess = ""
 
-# add comment :
-# git add .
-# git status
-# git commit -m "second commit"
-# git push -u origin main
+# Loop
+
+for letter in "HK Academy":
+    print(letter) # print all each letter in the word
+
+for index in range(3, 10):
+    print(index) # print out every number in the range (3~9)
+
+friends = ["Jim", "Karen", "Kevin"]
+len(friends)
+for index in range(len(friends)):
+    print(friends[index]) # Jim, Karen, Kevin
+    print(friends[2]) # Kevin x3
+
+for friend in friends:
+    print(friend) # Jim, Karen, Kevin
+
+for index in range(5): # range 0,1,2,3,4 (first iteration x1, not first x4)
+    if index == 0:
+        print("first iteration")
+    else:
+        print("Not first")
+
+# Exponent function
+
+print(2**3) # 2x2x2 = 8
+print(2^3) # binary operator (11 - 10 = 01 -> 1)
+print(3^6) # binary operator (111 - 11 = 100 -> 5)
+
+def raise_to_power(base_num, pow_num):
+    result = 1
+    for index in range(pow_num): # for loop (pow_num) repeat
+        result = result * base_num # 1 x 3 -> 3 x 3
+    return result
+
+print(raise_to_power(3,2)) #9
+
+# 2D lists & nested loops
+
+number_grid = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9],
+    [0]
+]
+
+print(number_grid[0][1]) # give 2
+
+for row in number_grid:
+    for col in row: # 1,2,3, [1,2,3]
+        print(col)
+    print(row)
+
+# Build a translator
+
+# def translate(phrase):
+#     translation = ""
+#     for letter in phrase:
+#         if letter.lower() in "aeiou":
+#             if letter.isupper():
+#                 translation = translation + "G"
+#             else:
+#                 translation = translation + "g"
+#         else:
+#             translation = translation + letter
+#     return translation
+#
+# print(translate(input("Enter a phrase: "))) # if I put On -> Gn, aeiou -> ggggg, AEIOU -> GGGGG
+
+# Comments
+'''
+ewrewrewr
+'''
+# This program is cool
+print("Comments are fun")
+
+# Try Except
+
+try:
+    answer = 10 / 0 # put value not through input function
+    number = int(input("Enter a number: "))
+    print(number)
+# except:
+#     print("Invalid Input")
+except ZeroDivisionError as err:
+    print("Divided by zero")
+except ValueError:
+    print("invalid input")
+
+
+# Reading files
+
+employee_file = open("employee.txt", "r") # r means reading
+# print(employee_file.readline()[1]) # read first line: Amy -> index[1] -> m
+#
+# print(employee_file.read()) # read after line
+
+for employee in employee_file.readlines(): # read all
+    print(employee)
+employee_file.close() # once it is done, close the file
+
+# Writing to files
+
+employee_file = open("employees.txt", "w") # a means append, w: overwrite
+employee_file.write("Toby - Human Resources")
+employee_file.write("Toby2 - Human Resources")
+employee_file.write("\nKelly - Customer Service") #put this in the new line
+employee_file.close() # once it is done, close the file
+
+
+employee_file = open("index.html","w")
+employee_file.write("<p>This is HTML</p>")
+employee_file.close()
+
+# Modules and Pip
+
+# import useful_tools # ?? not available module - couldn't find
+# print(useful_tools.roll_dice(10))
+
+# Classes & Objects
+
+from Student import Student # Make new module as student.py first
+
+student1 = Student("Jim", "Business", 3.1, False)
+student2 = Student("Pam", "Art", 2.5, True)
+
+print(student1.gpa)
+print(student2.gpa)
+
+# Building a multiple choice quiz
+
+# question_prompts = [
+#     "What color are apples?\n(a) Red/Green\n(b) Purple\n(c) Orange\n\n",
+#     "What color are Bananas?\n(a) Teal\n(b) Magenta\n(c) Yellow\n\n",
+#     "What color are strawberries?\n(a) Yellow\n(b) Red\n(c) Blue\n\n"
+# ]
+#
+# from Question import Question
+# questions = [
+#     Question(question_prompts[0], "a"),
+#     Question(question_prompts[1], "c"),
+#     Question(question_prompts[2], "b"),
+# ]
+#
+# def run_test(questions):
+#     score = 0
+#     for question in questions:
+#         answer = input(question.prompt)
+#         if answer == question.answer:
+#             score += 1
+#     print("You got " + str(score) + "/" + str(len(questions)) + " correct")
+#
+# run_test(questions)
+
+# Object Functions
+
+student1 = Student("Oscar", "Accounting", 3.1, False)
+student2 = Student("Phyllis", "Business", 3.8, False) # Check whether it is over 3.5
+
+print(student2.on_honor_roll())
+
+# Inheritance
+
+from Chef import Chef
+from ChineseChef import ChineseChef
+
+
+myChef = Chef()
+myChef.make_special_dish()
+
+myChineseChef = ChineseChef()
+myChineseChef.make_chicken()
+
+
